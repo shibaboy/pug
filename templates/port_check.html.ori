@@ -1,0 +1,170 @@
+{% extends "root.html" %}
+{% block content %}
+ 
+
+{% if error %}
+    <p align=center style="color: red;">Please submit proper information :)</p>
+{% endif %}
+<br>
+
+<!-- tab menu test -->
+<table align=center width=800>
+    <tr>
+        <td>
+            <table align=center border="0" cellpadding="0" cellspacing="0" width=800> 
+                <tr>
+                    <td align="center" onclick="javascript:TD_ch(1);" style="cursor:pointer;FONT-WEIGHT: bold;" bgcolor="#B3CADF" id="TD1" height="30" width="33%"> List Manage </td>
+                    <td align="center" onclick="javascript:TD_ch(2);" style="cursor:pointer" bgcolor="#ffffff" id="TD2" height="30" width="33%"> Status View </td>
+                    <td align="center" onclick="javascript:TD_ch(3);" style="cursor:pointer" bgcolor="#ffffff" id="TD3" height="30" width="33%"> New Feature </td>
+                </tr>
+            </table>
+ 
+            <div id="Tab1" style="display:block;"> 
+		<br>
+                <table border=0 bordercolor="#B3CADF" cellpadding="0" cellspacing="0" width=800>
+		    <tr>
+			<td colspan="2" style="background-color=#FFA500; padding-left:10px;">
+			<h4>VIP management</h4>
+			</td>
+		    </tr>
+		    <tr valign="top">
+			    <td style="background-color:#3DB1FF;width:150px;text-align:top;border:1px solid white; padding-left:10px;">
+			    <br>
+			    <b>client</b><br />
+			    <br>
+			    </td>
+			    <td style="background-color:#EEEEEE;height:100px;width:650px;text-align:top;border:1px solid white;  padding-left:5px;">
+				<br>
+				<form action="/port_check" method="get">
+				    <input type="text" value="고객명" size=20 name="name" onfocus=this.value="">
+				    <input type="text" value="SMS 수신번호" size=20 name="number" onfocus=this.value="">
+				    <input type="text" value="email" size=20 name="email" onfocus=this.value="">
+				    <input type="submit" value="add vip">
+				</form>
+				<br>
+				<form action="/port_check" method="get">
+				    <input type="text" value="VIP ID#" size=20 name="remove" onfocus=this.value="">
+				    <input type="submit" value="remove">
+				</form>
+			    </td>
+		    </tr>
+		    <tr valign="top">
+			    <td style="background-color:#3DB1FF;width:150px;text-align:top;border:1px solid white;  padding-left:10px;">
+			    <br>
+			    <b>IP & Port</b><br />
+			    <br>
+			    </td>
+			    <td style="background-color:#EEEEEE;height:100px;width:450px;text-align:top;border:1px solid white;  padding-left:5px;">
+				<br>
+				<form action="/port_check" method="get">
+				    <input type="text" value="VIP ID#" size=5 name="id" onfocus=this.value="">
+				    <input type="text" value="IP address" size=15 name="ip" onfocus=this.value="">
+				    <input type="text" value="Port No" size=15 name="port" onfocus=this.value="">
+				    <select name="type">
+					    <option value="tcp">tcp</option>
+					    <option value="udp">udp</option>
+				    </select>
+				    <input type="submit" value="add port">
+				</form>
+			    </td>
+		    </tr>
+		</table>
+		<br>
+		<table width=800>
+		    <tr>
+			<td colspan="6" style="background-color=#FFA500; padding-left:10px">
+			<h4>Current VIP list</h4>
+			</td>
+		    </tr>
+		    <tr>
+			<td width=50 align=center bgcolor="#3DB1FF"><b>id</b></td>
+			<td width=150 align=center bgcolor="#3DB1FF"><b>username</b></td>
+			<td width=200 align=center bgcolor="#3DB1FF"><b>phone</b></td>
+			<td width=200 align=center bgcolor="#3DB1FF"><b>email</b></td>
+			<td width=100 align=center bgcolor="#3DB1FF"><b>ip_count</b></td>
+			<td width=100 align=center bgcolor="#3DB1FF"><b>port_count</b></td>
+		    </tr>
+		    {% for i in name_result %}
+		    <tr>
+			<td width=50 align=center bgcolor="#EEEEEE">{{i.id}}</td>
+			<td width=150 align=center bgcolor="#EEEEEE"><a href="/user_info/?id={{i.id}}">{{i.name}}</a></td>
+			<td width=200 align=center bgcolor="#EEEEEE">{{i.number}}</td>
+			<td width=200 align=center bgcolor="#EEEEEE">{{i.email}}</td>
+			<td width=100 align=center bgcolor="#EEEEEE">{{i.ip}}</td>
+			<td width=100 align=center bgcolor="#EEEEEE">{{i.port}}</td>
+		    </tr>
+		    {% endfor %}
+		    <tr>
+			<td colspan="6" align=center bgcolor="#3DB1FF"><b>How to use?</b></td>
+		    </tr>
+		</table>
+	    <br>
+            </div>
+            <div id="Tab2" style="display:none;"> 
+		<br>
+                <table align=center border=0 bordercolor="#B3CADF" cellpadding="0" cellspacing="0" width=800>
+		    <tr>
+			<td colspan="5" style="background-color=#FFA500; padding-left:10px">
+			<h4>All list</h4>
+			</td>
+		    </tr>
+		    <tr>
+			<td style="border:1px solid white" width=50 align=center bgcolor="#3DB1FF"><b>id</b></td>
+			<td style="border:1px solid white" width=100 align=center bgcolor="#3DB1FF"><b>username</b></td>
+			<td style="border:1px solid white" width=100 align=center bgcolor="#3DB1FF"><b>ip</b></td>
+			<td style="border:1px solid white" width=50 align=center bgcolor="#3DB1FF"><b>port</b></td>
+			<td style="border:1px solid white" width=100 align=center bgcolor="#3DB1FF"><b>status</b></td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#3DB1FF"><b>updated</b></td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#3DB1FF"><b>description</b></td>
+		    </tr>
+		    {% for i in name_result %}
+		    <tr>
+			<td style="border:1px solid white" width=50 align=center bgcolor="#EEEEEE">{{i.id}}</td>
+			<td style="border:1px solid white" width=100 align=center bgcolor="#EEEEEE"><a href="/user_info/?id={{i.id}}">{{i.name}}</a></td>
+			<td style="border:1px solid white" width=150 align=center bgcolor="#EEEEEE">{{i.ip}} 개</td>
+			<td style="border:1px solid white" width=50 align=center bgcolor="#EEEEEE">{{i.port}} 개</td>
+			<td style="border:1px solid white" width=100 align=center bgcolor="#EEEEEE">{{i.status}}</td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#EEEEEE">{{i.updated}}</td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#EEEEEE">{{i.description}}</td>
+		    </tr>
+			{% for j in status_result %}
+			    {% ifequal i.name j.name %}
+			    {% if j.red %}
+		    <tr>
+			<td style="border:1px solid white" width=50 colspan=2 align=center bgcolor="#EEEEEE"></td>
+			<td style="border:1px solid white" width=150 align=center bgcolor="#EEEEEE">{{j.ip}}</td>
+			<td style="border:1px solid white" width=50 align=center bgcolor="#EEEEEE">{{j.port}}</td>
+			<td style="border:1px solid white" width=100 align=center bgcolor="#FFD5FF">{{j.status}}</td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#EEEEEE">{{j.updated}}</td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#EEEEEE">{{j.description}}</td>
+		    </tr>
+			    {% else  %}
+		    <tr>
+			<td style="border:1px solid white" width=50 colspan=2 align=center bgcolor="#EEEEEE"></td>
+			<td style="border:1px solid white" width=150 align=center bgcolor="#EEEEEE">{{j.ip}}</td>
+			<td style="border:1px solid white" width=50 align=center bgcolor="#EEEEEE">{{j.port}}</td>
+			<td style="border:1px solid white" width=100 align=center bgcolor="#A0CFEC">{{j.status}}</td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#EEEEEE">{{j.updated}}</td>
+			<td style="border:1px solid white" width=200 align=center bgcolor="#EEEEEE">{{j.description}}</td>
+		    </tr>
+			    {% endif  %}
+			    {% endifequal %}
+			{% endfor %}
+
+		    {% endfor %}
+                </table>
+            </div>
+            <div id="Tab3" style="display:none;"> 
+                <table border="1" bordercolor="#B3CADF" cellpadding="0" cellspacing="0" width="100%"> 
+                    <tr> 
+                        <td bgcolor=#ffffff colspan=3> 
+			    add more view pages. 
+                        </td> 
+                    </tr> 
+                </table>
+            </div>
+        </td> 
+    </tr>
+</table>
+
+{% endblock %}

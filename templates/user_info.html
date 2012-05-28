@@ -1,0 +1,93 @@
+{% extends "root.html" %}
+{% block content %}
+    
+<div id="container" align=center>
+    {% if error %}
+	<p style="color: red;">Please submit proper information :)</p>
+    {% endif %}
+    <br>
+    <table>
+	<tr>
+	<td><input type="button" value="Go Back" onclick="location.href='javascript:history.back();'";>
+	</td>
+	<td><form action="/port_check/"><input type="submit" value="Go Home"></form>
+	</td>
+	</tr>
+    </table>
+    <br>
+    <br>
+    <table width="800" border="0">
+	<tr>
+	    <td colspan="2" style="background-color=#FFA500;">
+	    <h3>User</h3>
+	    </td>
+	</tr>
+	<tr valign="top">
+		<td style="background-color:#3DB1FF;width:150px;text-align:top; padding-left:10px;">
+		<br>
+		<b>user info</b><br />
+		<br>
+		</td>
+		<td style="background-color:#EEEEEE;height:100px;width:650px;text-align:top; padding-left:5px;">
+		    <br>
+<pre>
+name    : {{user_result.0.name}}
+<br>
+number  : {{user_result.0.number}}
+<br>
+email  : {{user_result.0.email}}
+</pre>
+		    <br>
+		</td>
+	</tr>
+    </table>
+    <br>
+    <table width=800>
+	<tr>
+	    <td colspan="6" style="background-color=#FFA500;">
+	    <h3>IP & Port list</h3>
+	    </td>
+	</tr>
+	<tr>
+	    <td width=150 align=center bgcolor="#3DB1FF"><b>ip</b></td>
+	    <td width=100 align=center bgcolor="#3DB1FF"><b>port</b></td>
+	    <td width=100 align=center bgcolor="#3DB1FF"><b>status</b></td>
+	    <td width=100 align=center bgcolor="#3DB1FF"><b>last_check</b></td>
+	    <td width=250 align=center bgcolor="#3DB1FF"><b>description</b></td>
+	    <td width=100 align=center bgcolor="#3DB1FF"><b>manage</b></td>
+	</tr>
+	{% for i in user_result %}
+
+
+        {% if i.red %}
+        <tr>
+            <td width=150 align=center bgcolor="#FFD5FF">{{i.ip}}</td>
+            <td width=100 align=center bgcolor="#FFD5FF">{{i.port}}</td>
+            <td width=150 align=center bgcolor="#FFD5FF">{{i.status}}</td>
+            <td width=100 align=center bgcolor="#FFD5FF">{{i.updated}}</td>
+            <td width=250 align=center bgcolor="#FFD5FF">{{i.description|linebreaks}}</td>
+            <td width=100 align=center bgcolor="#FFD5FF"><form action="/user_info" method="get"><input type="hidden" name="port_id" value={{i.port_id}}><input type='submit' value="del"></form></td>
+        </tr>
+        {% else %}
+	<tr>
+	    <td width=150 align=center bgcolor="#A0CFEC">{{i.ip}}</td>
+	    <td width=100 align=center bgcolor="#A0CFEC">{{i.port}}</td>
+	    <td width=150 align=center bgcolor="#A0CFEC">{{i.status}}</td>
+	    <td width=100 align=center bgcolor="#A0CFEC">{{i.updated}}</td>
+	    <td width=250 align=center bgcolor="#A0CFEC">{{i.description}}</td>
+            <td width=100 align=center bgcolor="#A0CFEC"><form action="/user_info" method="get"><input type="hidden" name="port_id" value={{i.port_id}}><input type='submit' value="del"></form></td>
+	</tr>
+        {% endif %}
+	{% endfor %}
+	<tr>
+	    <td colspan="6" align=center bgcolor="#3DB1FF"><b> </b></td>
+	</tr>
+    </table>
+    <br>
+
+
+
+
+</div>
+
+{% endblock %}

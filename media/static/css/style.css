@@ -1,0 +1,38 @@
+body {
+  font-family: "CenturyGothicRegular", "Century Gothic", Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+}
+
+p {
+  line-height: 1.0em;
+}
+
+A:link { 
+    text-decoration: none 
+}
+
+a {
+    text-decoration:none;
+}
+img {
+    border:0;
+}
+
+html { 
+    overflow-y:scroll; 
+}
+
+
+
+
+
+
+
+.code { border: 1px solid #ccc; list-style-type: decimal-leading-zero; padding: 5px; margin: 0; }
+.code code { display: block; padding: 3px; margin-bottom: 0; }
+.code li { background: #ddd; border: 1px solid #ccc; margin: 0 0 2px 2.2em; }
+.indent1 { padding-left: 1em; }
+.indent2 { padding-left: 2em; }
+.indent3 { padding-left: 3em; }
+.indent4 { padding-left: 4em; }
+.indent5 { padding-left: 5em; }

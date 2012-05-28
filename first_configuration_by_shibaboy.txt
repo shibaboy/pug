@@ -1,0 +1,153 @@
+    1  halt
+    2  passwd
+    3  rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+    4  yum search django
+    5  yum install gcc gdbm-devel readline-devel ncurses-devel zlib-devel bzip2-develsqlite-devel db4-devel openssl-devel tk-devel bluez-libs-devel -y
+    6  yum search django
+    7  yum install Django.noarch
+    8  django-admin 
+    9  django-admin help
+   10  yum install httpd httpd-devel
+   11  yum seaerch mysql
+   12  yum search mysql
+   13  yum search mysql
+   14  yum search mysql-devel
+   15  yum search mysql-*
+   16  yum search mysql-
+   17  yum install mysql-devel mysql-server
+   18  yum search mod_python
+   19  yum install mod_python.x86_64
+   20  cd /opt/
+   21  ls
+   22  django-admin startproject vp_check_site
+   23  ls
+   24  cd vp_check_site/
+   25  ls
+   26  django-admin --version
+   27  ls
+   28  vim settings.py 
+   29  python manage.py runserver
+   30  python manage.py startapp port_check
+   31  ls
+   32  cd port_check/
+   33  ls
+   34  cd ..
+   35  ls
+   36  cd port_check/
+   37  ls
+   38  cd ..
+   39  ls
+   40  ifconfig
+   41  ls
+   42  cd ..
+   43  ls
+   44  cd vp_check_site/
+   45  ls
+   46  mysql
+   47  service mysqld status
+   48  service mysqld start
+   49  /usr/bin/mysqladmin -u root password 'root'
+   50  ls
+   51  vim settings.py
+   52  mysql -uroot -p
+   53  mysql -uroot -p
+   54  ls
+   55  vim port_check/models.py 
+   56  ls
+   57  python manage.py syncdb
+   58  ifconfig
+   59  cd /opt/
+   60  ls
+   61  mkdir source
+   62  mv MySQL-python-1.2.3.tar.gz source/
+   63  cd source/
+   64  ls
+   65  tar xvfz MySQL-python-1.2.3.tar.gz 
+   66  cd MySQL-python-1.2.3
+   67  python setup.py build
+   68  yum search setuptools
+   69  yum install python-setuptools -y
+   70  python setup.py build
+   71  cd ..
+   72  yum search mysql-python
+   73  yum install MySQL-python
+   74  python
+   75  cd ..
+   76  ls
+   77  cd vp_check_site/
+   78  ls
+   79  python manage.py syncdb
+   80  ls
+   81  vim urls.py 
+   82  python manage.py runserver 0.0.0.0:5000
+   83  ls
+   84  cd port_check/
+   85  vim admin.py
+   86  python manage.py runserver 0.0.0.0:5000
+   87  cd ..
+   88  python manage.py runserver 0.0.0.0:5000
+   89  vim port_check/admin.py
+   90  python manage.py runserver 0.0.0.0:5000
+   91  vim port_check/admin.py
+   92  vim settings.py
+   93  cd ..
+   94  ls
+   95  vim monitor/port_check/admin.py
+   96  vim vp_check_site/port_check/admin.py
+   97  cd vp_check_site/
+   98  python manage.py runserver 0.0.0.0:5000
+   99  ls
+  100  vim port_check/views.py 
+  101  mkdir templates
+  102  vim settings.py
+  103  ls
+  104  cd ..
+  105  ls
+  106  cd monitor/monitor/templates/
+  107  ls
+  108  cp ./* ../../../vp_check_site/templates/
+  109  cd admin/
+  110  ls
+  111  vim base_site.html 
+  112  cd ../../../../vp_check_site/
+  113  python runserver 0.0.0.0:5000
+  114  python manage.py runserver 0.0.0.0:5000
+  115  vim urls.py
+  116  python manage.py runserver 0.0.0.0:5000
+  117  ls
+  118  vim /etc/httpd/conf/httpd.conf 
+  119  vim /etc/httpd/conf.d/python.conf 
+  120  vim /etc/httpd/conf.d/port_check.conf
+  121  service httpd restart
+  122  ls
+  123  mkdir media
+  124  service httpd restart
+  125  vim /etc/httpd/conf/httpd.conf 
+  126  service httpd restart
+  127  ifconfig
+  128  ls media/
+  129  vim urls.py
+  130  vim settings.py
+  131  vim settings.py
+  132  tail -20 /var/log/httpd/error_log 
+  133  tail -f /var/log/httpd/error_log 
+  134  service httpd restart
+  135  tail -f /var/log/httpd/error_log 
+  136  vim templates/root.html
+  137  service httpd restart
+  138  tail -f /var/log/httpd/error_log 
+  139  ls
+  140  cd media/
+  141  ls
+  142  mkdir static
+  143  mv css images js static
+  144  ls
+  145  service httpd restart
+  146  cd ..
+  147  tail -f /var/log/httpd/error_log 
+  148  ls
+  149  cd port_check/
+  150  ls
+  151  cd ..
+  152  history 
+  153  history >> first_configuration_by_shibaboy.txt
